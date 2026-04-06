@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – AI vs AI: Double Check</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --surface: #13151c;
+      --border: #1e2130;
+      --accent: #5b7fff;
+      --accent2: #a259ff;
+      --text: #e8eaf2;
+      --muted: #7a7f9a;
+      --tag-bg: #1a1e2e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow orb */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(91,127,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 72px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 30%, var(--accent) 80%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .subtitle span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+      margin: 56px 0;
+    }
+
+    /* Section title */
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Policy item */
+    .item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 0 20px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .item-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: 4px;
+      opacity: 0.7;
+    }
+
+    .item-body h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .item-body p {
+      font-size: 14.5px;
+      color: #9196b0;
+      line-height: 1.8;
+    }
+
+    .item-body p + p {
+      margin-top: 10px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(91,127,255,0.3);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    a:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .contact-email {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: gap;
+      font-size: 12px;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .item:nth-child(1)  { animation-delay: 0.05s; }
+    .item:nth-child(2)  { animation-delay: 0.10s; }
+    .item:nth-child(3)  { animation-delay: 0.15s; }
+    .item:nth-child(4)  { animation-delay: 0.20s; }
+    .item:nth-child(5)  { animation-delay: 0.25s; }
+    .item:nth-child(6)  { animation-delay: 0.30s; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="badge">Legal Documents</div>
+    <h1>AI vs AI:<br>Double Check</h1>
+    <div class="subtitle">
+      <span>🔒 Privacy Policy &amp; Terms of Service</span>
+      <span>Last updated: April 6, 2026</span>
+    </div>
+  </header>
+
+  <!-- PRIVACY POLICY -->
+  <div class="section-label">Privacy Policy</div>
+
+  <div class="item">
+    <div class="item-num">01</div>
+    <div class="item-body">
+      <h3>Data Minimization &amp; Privacy</h3>
+      <p>AI vs AI: Double Check is built on the principle of data privacy. We do not require any user accounts, and we do not collect, store, or sell any personal information such as names, email addresses, or locations.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">02</div>
+    <div class="item-body">
+      <h3>Anonymous AI Processing (OpenRouter Gateway)</h3>
+      <p>To provide our comparison feature, your queries are transmitted to <a href="https://openrouter.ai" target="_blank">OpenRouter</a>. OpenRouter acts as a secure, anonymous gateway that routes your request to different AI models (e.g., GPT-4o mini, Gemini Flash, or Claude).</p>
+      <p>All queries are sent without personal identifiers. Your data is subject to the privacy policies of OpenRouter and the underlying model providers (OpenAI, Google, Anthropic, etc.).</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">03</div>
+    <div class="item-body">
+      <h3>Local Device Storage</h3>
+      <p>All chat history, settings, and token balances are stored exclusively on your local device. We have no access to your private conversations. You can delete this data at any time by removing the app from your device.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">04</div>
+    <div class="item-body">
+      <h3>Quality Reporting (FormSubmit)</h3>
+      <p>If you flag a response as inappropriate or incorrect, the specific AI output and your query are sent to the developer via FormSubmit.co. This is used solely to audit and improve the AI filtering and accuracy.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">05</div>
+    <div class="item-body">
+      <h3>Advertising</h3>
+      <p>We use Google AdMob to provide rewarded video ads. AdMob may use device identifiers to serve personalized ads. Please refer to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a> for more information.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">06</div>
+    <div class="item-body">
+      <h3>Contact</h3>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-name">Jonas Göttsche</div>
+          <div class="contact-email"><a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TERMS OF SERVICE -->
+  <div class="section-label">Terms of Service</div>
+
+  <div class="item">
+    <div class="item-num">01</div>
+    <div class="item-body">
+      <h3>The "Double Check" Methodology</h3>
+      <p>Our app is specifically designed to reduce the risk of AI Hallucinations (false information generated by AI) by cross-referencing answers from multiple independent models. While this multi-stage verification significantly increases the reliability of the information, it does not guarantee 100% accuracy.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">02</div>
+    <div class="item-body">
+      <h3>No Professional Advice</h3>
+      <p>The outputs provided by AI 1, AI 2, or the Judge AI are for informational and educational purposes only. Do not use this app for medical, legal, financial, or any safety-critical decisions.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">03</div>
+    <div class="item-body">
+      <h3>Prohibited Use</h3>
+      <p>You agree not to use the app to generate harmful, illegal, or discriminatory content. We provide a reporting tool to flag such outputs, and we actively monitor these reports to improve our safety filters.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">04</div>
+    <div class="item-body">
+      <h3>Tokens</h3>
+      <p>The app uses a local token system. Tokens have no monetary value, are not refundable, and cannot be transferred between devices.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">05</div>
+    <div class="item-body">
+      <h3>Disclaimer of Liability</h3>
+      <p>The developer is not responsible for any decisions made based on AI-generated content. By using the app, you acknowledge the inherent limitations of Large Language Models.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-num">06</div>
+    <div class="item-body">
+      <h3>Contact</h3>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-name">Jonas Göttsche</div>
+          <div class="contact-email"><a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-brand">AI vs AI: Double Check</span>
+    <span>© 2026 Jonas Göttsche · All rights reserved</span>
+  </footer>
+
+</div>
+</body>
+</html>
