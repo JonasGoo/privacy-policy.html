@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Legal – AI vs AI – Double Check</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <title>Legal – AI – Double Check</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b0c10;
-      --surface: #13151c;
-      --border: #1e2130;
-      --accent: #5b7fff;
-      --accent2: #a259ff;
-      --text: #e8eaf2;
-      --muted: #7a7f9a;
-      --tag-bg: #1a1e2e;
+      --blue:   #2B5CF5;
+      --purple: #6B35E8;
+      --orange: #F5830A;
+      --bg:     #F0F2F8;
+      --card:   #ffffff;
+      --text:   #1a1d2e;
+      --muted:  #6b7080;
+      --border: #e2e5f0;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,113 +22,86 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.75;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 500px;
-      background: radial-gradient(ellipse, rgba(91,127,255,0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .wrap {
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+      padding: 64px 24px 80px;
+      text-align: center;
       position: relative;
-      z-index: 1;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 80px 24px 120px;
+      overflow: hidden;
     }
 
-    header {
-      margin-bottom: 72px;
-      animation: fadeUp 0.7s ease both;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 5px 14px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+    .hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
       margin-bottom: 24px;
     }
 
-    .badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 30%, var(--accent) 80%, var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 16px;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      color: var(--muted);
+    .hero-badges {
       display: flex;
-      align-items: center;
-      gap: 16px;
+      justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
-      margin: 56px 0;
+    .hero-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
     }
 
+    /* ── WAVE ── */
+    .wave {
+      display: block;
+      margin-bottom: -2px;
+    }
+
+    /* ── WRAP ── */
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 100px;
+    }
+
+    /* ── SECTION LABEL ── */
     .section-label {
-      font-family: 'Syne', sans-serif;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 32px;
+      color: var(--blue);
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -141,80 +114,70 @@
       background: var(--border);
     }
 
+    /* ── ITEM ── */
     .item {
       display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 0 20px;
-      margin-bottom: 40px;
-      animation: fadeUp 0.6s ease both;
+      grid-template-columns: 40px 1fr;
+      gap: 0 16px;
+      margin-bottom: 28px;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(43,92,245,0.04);
+      animation: fadeUp 0.5s ease both;
     }
 
     .item-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      color: var(--accent);
-      padding-top: 4px;
-      opacity: 0.7;
+      color: var(--blue);
+      opacity: 0.6;
+      padding-top: 2px;
     }
 
     .item-body h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
+      margin-bottom: 8px;
     }
 
     .item-body p {
-      font-size: 14.5px;
-      color: #9196b0;
-      line-height: 1.8;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
-    .item-body p + p { margin-top: 10px; }
+    .item-body p + p { margin-top: 8px; }
 
     a {
-      color: var(--accent);
+      color: var(--blue);
       text-decoration: none;
-      border-bottom: 1px solid rgba(91,127,255,0.3);
-      transition: border-color 0.2s, color 0.2s;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(43,92,245,0.3);
+      transition: border-color 0.2s;
     }
 
-    a:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,0.4);
-    }
+    a:hover { border-color: var(--blue); }
 
+    /* ── CONTACT CARD ── */
     .contact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 28px;
+      background: linear-gradient(135deg, #f5f7ff, #ede8ff);
+      border: 1px solid rgba(107,53,232,0.15);
+      border-radius: 14px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .contact-card.column {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      gap: 14px;
+      margin-top: 12px;
     }
 
     .contact-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -223,7 +186,6 @@
     }
 
     .contact-name {
-      font-family: 'Syne', sans-serif;
       font-size: 14px;
       font-weight: 700;
       color: var(--text);
@@ -235,33 +197,69 @@
       margin-top: 2px;
     }
 
-    .address-block {
-      font-size: 14px;
-      color: #9196b0;
-      line-height: 2.2;
+    /* ── ADDRESS CARD ── */
+    .address-card {
+      background: linear-gradient(135deg, #f5f7ff, #ede8ff);
+      border: 1px solid rgba(107,53,232,0.15);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-top: 12px;
     }
 
+    .address-card .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .address-block {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 2.1;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── FOOTER ── */
     footer {
-      margin-top: 80px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 12px;
       color: var(--muted);
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
     }
 
     .footer-brand {
-      font-family: 'Syne', sans-serif;
       font-weight: 700;
       color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
+    .footer-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+    }
+
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
@@ -274,182 +272,199 @@
   </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <div class="badge">Legal Documents</div>
-    <h1>AI vs AI &#8211;<br>Double Check</h1>
-    <div class="subtitle">
-      <span>&#x1F512; Privacy Policy &middot; Terms of Service &middot; Legal Notice</span>
-      <span>Last updated: April 6, 2026</span>
-    </div>
-  </header>
-
-  <!-- PRIVACY POLICY -->
-  <div class="section-label">Privacy Policy</div>
-
-  <div class="item">
-    <div class="item-num">01</div>
-    <div class="item-body">
-      <h3>Data Minimization &amp; Privacy</h3>
-      <p>AI vs AI &#8211; Double Check is built on the principle of data privacy. I do not require any user accounts, and I do not collect, store, or sell any personal information such as names, email addresses, or locations.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">02</div>
-    <div class="item-body">
-      <h3>Anonymous AI Processing (OpenRouter Gateway)</h3>
-      <p>To provide the comparison feature, your queries are transmitted to <a href="https://openrouter.ai" target="_blank">OpenRouter</a>. OpenRouter acts as a secure, anonymous gateway that routes your request to different AI models (e.g., GPT-4o mini, Gemini Flash, or Claude).</p>
-      <p>All queries are sent without personal identifiers. Your data is subject to the privacy policies of OpenRouter and the underlying model providers (OpenAI, Google, Anthropic, etc.).</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">03</div>
-    <div class="item-body">
-      <h3>Local Device Storage</h3>
-      <p>All chat history, settings, and token balances are stored exclusively on your local device. I have no access to your private conversations. You can delete this data at any time by removing the app from your device.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">04</div>
-    <div class="item-body">
-      <h3>Quality Reporting (FormSubmit)</h3>
-      <p>If you flag a response as inappropriate or incorrect, the specific AI output and your query are sent to me via FormSubmit.co. This is used solely to audit and improve the AI filtering and accuracy.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">05</div>
-    <div class="item-body">
-      <h3>Advertising</h3>
-      <p>I use Google AdMob to provide rewarded video ads. AdMob may use device identifiers to serve personalized ads. Please refer to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a> for more information.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">06</div>
-    <div class="item-body">
-      <h3>Contact</h3>
-      <div class="contact-card">
-        <div class="contact-icon">&#x2709;&#xFE0F;</div>
-        <div>
-          <div class="contact-name">Jonas G&#246;ttsche</div>
-          <div class="contact-sub"><a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a></div>
-        </div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>AI – Double Check</h1>
+      <p>Cross-reference answers from multiple AI models</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Privacy Policy</span>
+        <span class="hero-badge">Terms of Service</span>
+        <span class="hero-badge">Legal Notice</span>
       </div>
     </div>
   </div>
 
-  <div class="divider"></div>
+  <svg class="wave" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;display:block;">
+    <path d="M0 48 C360 0 1080 0 1440 48 L1440 48 L0 48Z" fill="#F0F2F8"/>
+  </svg>
 
-  <!-- TERMS OF SERVICE -->
-  <div class="section-label">Terms of Service</div>
+  <div class="wrap">
 
-  <div class="item">
-    <div class="item-num">01</div>
-    <div class="item-body">
-      <h3>The &#8220;Double Check&#8221; Methodology</h3>
-      <p>This app is specifically designed to reduce the risk of AI Hallucinations (false information generated by AI) by cross-referencing answers from multiple independent models. While this multi-stage verification significantly increases the reliability of the information, it does not guarantee 100% accuracy.</p>
-    </div>
-  </div>
+    <!-- PRIVACY POLICY -->
+    <div class="section-label">Privacy Policy</div>
 
-  <div class="item">
-    <div class="item-num">02</div>
-    <div class="item-body">
-      <h3>No Professional Advice</h3>
-      <p>The outputs provided by AI 1, AI 2, or the Judge AI are for informational and educational purposes only. Do not use this app for medical, legal, financial, or any safety-critical decisions.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">03</div>
-    <div class="item-body">
-      <h3>Prohibited Use</h3>
-      <p>You agree not to use the app to generate harmful, illegal, or discriminatory content. I provide a reporting tool to flag such outputs, and I actively monitor these reports to improve the safety filters.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">04</div>
-    <div class="item-body">
-      <h3>Tokens</h3>
-      <p>The app uses a local token system. Tokens have no monetary value, are not refundable, and cannot be transferred between devices.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">05</div>
-    <div class="item-body">
-      <h3>Disclaimer of Liability</h3>
-      <p>I am not responsible for any decisions made based on AI-generated content. By using this app, you acknowledge the inherent limitations of Large Language Models.</p>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-num">06</div>
-    <div class="item-body">
-      <h3>Contact</h3>
-      <div class="contact-card">
-        <div class="contact-icon">&#x2709;&#xFE0F;</div>
-        <div>
-          <div class="contact-name">Jonas G&#246;ttsche</div>
-          <div class="contact-sub"><a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a></div>
-        </div>
+    <div class="item">
+      <div class="item-num">01</div>
+      <div class="item-body">
+        <h3>Data Minimization &amp; Privacy</h3>
+        <p>AI – Double Check is built on the principle of data privacy. I do not require any user accounts, and I do not collect, store, or sell any personal information such as names, email addresses, or locations.</p>
       </div>
     </div>
-  </div>
 
-  <div class="divider"></div>
+    <div class="item">
+      <div class="item-num">02</div>
+      <div class="item-body">
+        <h3>Anonymous AI Processing (OpenRouter Gateway)</h3>
+        <p>To provide the comparison feature, your queries are transmitted to <a href="https://openrouter.ai" target="_blank">OpenRouter</a>. OpenRouter acts as a secure, anonymous gateway that routes your request to different AI models (e.g., GPT-4o mini, Gemini Flash, or Claude).</p>
+        <p>All queries are sent without personal identifiers. Your data is subject to the privacy policies of OpenRouter and the underlying model providers (OpenAI, Google, Anthropic, etc.).</p>
+      </div>
+    </div>
 
-  <!-- LEGAL NOTICE -->
-  <div class="section-label">Legal Notice</div>
+    <div class="item">
+      <div class="item-num">03</div>
+      <div class="item-body">
+        <h3>Local Device Storage</h3>
+        <p>All chat history, settings, and token balances are stored exclusively on your local device. I have no access to your private conversations. You can delete this data at any time by removing the app from your device.</p>
+      </div>
+    </div>
 
-  <div class="item">
-    <div class="item-num">&#167;1</div>
-    <div class="item-body">
-      <h3>Information in Accordance with Section 5 TMG</h3>
-      <div class="contact-card column">
-        <div class="contact-row">
-          <div class="contact-icon">&#x1F9D1;&#x200D;&#x1F4BB;</div>
+    <div class="item">
+      <div class="item-num">04</div>
+      <div class="item-body">
+        <h3>Quality Reporting (FormSubmit)</h3>
+        <p>If you flag a response as inappropriate or incorrect, the specific AI output and your query are sent to me via FormSubmit.co. This is used solely to audit and improve the AI filtering and accuracy.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">05</div>
+      <div class="item-body">
+        <h3>Advertising</h3>
+        <p>I use Google AdMob to provide rewarded video ads. AdMob may use device identifiers to serve personalized ads. Please refer to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a> for more information.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">06</div>
+      <div class="item-body">
+        <h3>Contact</h3>
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
           <div>
-            <div class="contact-name">Jonas G&#246;ttsche</div>
-            <div class="contact-sub">Responsible for content</div>
+            <div class="contact-name">Jonas Göttsche</div>
+            <div class="contact-sub"><a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a></div>
           </div>
         </div>
-        <div class="address-block">
-          Rudolf-Kinau-Weg 3<br>
-          23843 Bad Oldesloe<br>
-          Germany<br><br>
-          <a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TERMS OF SERVICE -->
+    <div class="section-label">Terms of Service</div>
+
+    <div class="item">
+      <div class="item-num">01</div>
+      <div class="item-body">
+        <h3>The "Double Check" Methodology</h3>
+        <p>This app is specifically designed to reduce the risk of AI Hallucinations (false information generated by AI) by cross-referencing answers from multiple independent models. While this multi-stage verification significantly increases the reliability of the information, it does not guarantee 100% accuracy.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">02</div>
+      <div class="item-body">
+        <h3>No Professional Advice</h3>
+        <p>The outputs provided by AI 1, AI 2, or the Judge AI are for informational and educational purposes only. Do not use this app for medical, legal, financial, or any safety-critical decisions.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">03</div>
+      <div class="item-body">
+        <h3>Prohibited Use</h3>
+        <p>You agree not to use the app to generate harmful, illegal, or discriminatory content. I provide a reporting tool to flag such outputs, and I actively monitor these reports to improve the safety filters.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">04</div>
+      <div class="item-body">
+        <h3>Tokens</h3>
+        <p>The app uses a local token system. Tokens have no monetary value, are not refundable, and cannot be transferred between devices.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">05</div>
+      <div class="item-body">
+        <h3>Disclaimer of Liability</h3>
+        <p>I am not responsible for any decisions made based on AI-generated content. By using this app, you acknowledge the inherent limitations of Large Language Models.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">06</div>
+      <div class="item-body">
+        <h3>Contact</h3>
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-name">Jonas Göttsche</div>
+            <div class="contact-sub"><a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="item">
-    <div class="item-num">&#167;2</div>
-    <div class="item-body">
-      <h3>Disclaimer</h3>
-      <p>The content of this app has been created with the utmost care. However, I cannot guarantee the accuracy, completeness, or timeliness of the information provided. As a service provider, I am responsible for my own content in accordance with Section 7 para. 1 TMG under general law.</p>
-    </div>
-  </div>
+    <div class="divider"></div>
 
-  <div class="item">
-    <div class="item-num">&#167;3</div>
-    <div class="item-body">
-      <h3>App: AI vs AI &#8211; Double Check</h3>
-      <p>This page contains the legal documents for the app <strong style="color: var(--text);">AI vs AI &#8211; Double Check</strong>, independently developed and published by Jonas G&#246;ttsche.</p>
+    <!-- LEGAL NOTICE -->
+    <div class="section-label">Legal Notice</div>
+
+    <div class="item">
+      <div class="item-num">§1</div>
+      <div class="item-body">
+        <h3>Information in Accordance with Section 5 TMG</h3>
+        <div class="address-card">
+          <div class="contact-row">
+            <div class="contact-icon">🧑‍💻</div>
+            <div>
+              <div class="contact-name">Jonas Göttsche</div>
+              <div class="contact-sub">Responsible for content</div>
+            </div>
+          </div>
+          <div class="address-block">
+            Rudolf-Kinau-Weg 3<br>
+            23843 Bad Oldesloe<br>
+            Germany<br><br>
+            <a href="mailto:goettsche.jonas@gmail.com">goettsche.jonas@gmail.com</a>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="item">
+      <div class="item-num">§2</div>
+      <div class="item-body">
+        <h3>Disclaimer</h3>
+        <p>The content of this app has been created with the utmost care. However, I cannot guarantee the accuracy, completeness, or timeliness of the information provided. As a service provider, I am responsible for my own content in accordance with Section 7 para. 1 TMG under general law.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">§3</div>
+      <div class="item-body">
+        <h3>App: AI – Double Check</h3>
+        <p>This page contains the legal documents for the app <strong>AI – Double Check</strong>, independently developed and published by Jonas Göttsche.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p style="font-size:13px; color:var(--muted); text-align:center;">Last updated: April 6, 2026</p>
+
   </div>
 
   <footer>
-    <span class="footer-brand">AI vs AI &#8211; Double Check</span>
-    <span>&#169; 2026 Jonas G&#246;ttsche &middot; All rights reserved</span>
+    <div class="footer-brand">
+      <div class="footer-dot"></div>
+      AI – Double Check
+    </div>
+    <span>© 2026 Jonas Göttsche · All rights reserved</span>
   </footer>
 
-</div>
 </body>
 </html>
